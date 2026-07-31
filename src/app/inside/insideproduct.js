@@ -5,6 +5,7 @@ import Footer from "@/components/footer";
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
+import YouMayLike from "@/components/youmaylike";
 
 export default function InsideContact() {
   const { addToCart } = useCart();
@@ -14,7 +15,7 @@ export default function InsideContact() {
       <Navbar />
 
       {/* <main className="max-w-7xl mx-auto px-8 pt-40 mb-20"> */}
-              <main className="max-w-6xl mx-auto px-6 py-25">
+      <main className="max-w-6xl mx-auto px-6 py-25">
 
         {/* Product Section */}
         <div className="grid md:grid-cols-2 gap-10 items-start ">
@@ -124,6 +125,9 @@ export default function InsideContact() {
             </p>
           </div>
         </div>
+
+        {/* You May Also Like Section */}
+        <YouMayLike />
       </main>
 
       <Footer />

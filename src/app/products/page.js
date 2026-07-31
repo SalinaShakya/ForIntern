@@ -33,7 +33,7 @@ export default function Products() {
 
       {/* Carousel — flush below navbar */}
       <div className=" relative w-full h-[400px] overflow-hidden">
-              {/* <div className=" relative w-full h-[400px] overflow-hidden"> */}
+        {/* <div className=" relative w-full h-[400px] overflow-hidden"> */}
 
         {slides.map((slide, i) => (
           <div
@@ -173,7 +173,7 @@ export default function Products() {
                       onClick={() => addToCart({ name: product.name, price: product.price, src: product.src })}
                       className="flex-1 py-2 text-xs font-semibold rounded-lg border-2 border-[#3B6B4A] text-[#3B6B4A] hover:bg-[#3B6B4A] hover:text-white transition-all duration-200"
                     >
-                       Add to Cart
+                      Add to Cart
                     </button>
 
                     {/*View — navigates to detail page if buyLink exists */}

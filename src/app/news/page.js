@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import Mail from "@/components/mail";
 
 export default function News() {
     const news = [
@@ -18,6 +19,13 @@ export default function News() {
             description:
                 "Herbal teas infused with ginger, mint, lemongrass, and tulsi are becoming increasingly popular for their refreshing taste and natural wellness benefits.",
         },
+        {
+            title: "Herbal Tea: A Wellness Trend",
+            image: "/images/newz.jpg",
+            date: "July 6, 2026",
+            description:
+                "Herbal teas infused with ginger, mint, lemongrass, and tulsi are becoming increasingly popular for their refreshing taste and natural wellness benefits.",
+        }
         // {
         //     title: "From the Hills to Your Cup",
         //     image: "/images/tulsitea.jpg",
@@ -150,37 +158,7 @@ export default function News() {
 
                 </section>
 
-                {/* Newsletter */}
-                {/* <section className="bg-green-800 text-black py-20">
-
-                    <div className="max-w-3xl mx-auto text-center px-6">
-
-                        <h2 className="text-4xl text  -[#3B6B4A] font-bold mb-6">
-                            Stay Updated
-                        </h2>
-
-                        <p className="mb-8 text-lg">
-                            Subscribe to receive tea news, product launches, wellness tips,
-                            and exclusive offers from FORTEA.
-                        </p>
-
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-
-                            <input
-                                type="email"
-                                placeholder="Enter your email"
-                                className="px-5 py-3 rounded-full text-black w-full sm:w-96"
-                            />
-
-                            <button className="bg-white text-green-800 px-2 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
-                                Subscribe
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                </section> */}
+                <Mail />
 
             </main>
 
