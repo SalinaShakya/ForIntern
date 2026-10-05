@@ -4,11 +4,12 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Image from "next/image";
 import Link from "next/link";
-import { useCart } from "@/context/CartContext";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/store/slices/cartSlice";
 import YouMayLike from "@/components/youmaylike";
 
 export default function InsideContact() {
-  const { addToCart } = useCart();
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -61,11 +62,13 @@ export default function InsideContact() {
             <div className="flex gap-4">
               <button
                 onClick={() =>
-                  addToCart({
-                    name: "Black Tea",
-                    price: "Rs. 450",
-                    src: "/images/blacktea.jpg",
-                  })
+                  dispatch(
+                    addToCart({
+                      name: "Black Tea",
+                      price: "Rs. 450",
+                      src: "/images/blacktea.jpg",
+                    })
+                  )
                 }
                 className="flex-1 py-3 rounded-xl border-2 border-[#3B6B4A] text-[#3B6B4A] font-semibold hover:bg-[#3B6B4A] hover:text-white transition"
               >

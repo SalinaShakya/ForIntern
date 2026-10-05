@@ -48,26 +48,23 @@ export default function Home() {
 
       </main>
 
-      <div className="text-black h-screen bg-[#FBF5EF] bg-cover bg-center bg-no-repeat">
-        <div className="flex justify-start pt-20 pl-70">
-          <div className="flex h-full pt-5 items-start">
+      <div className="text-black py-20 bg-[#FBF5EF] bg-cover bg-center bg-no-repeat">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-10 max-w-7xl mx-auto px-6">
+          <div className="flex justify-center items-start">
             <Image
               src="/images/hero.jpg"
               alt="Hero"
               width={250}
               height={250}
               quality={100}
-              className="rounded-full object-cover "
-
+              className="rounded-full object-cover"
               unoptimized={true}
             />
           </div>
 
-          <div className="max-w-2xl w-full px-10 ">
-            <div className=" text-[#5C6650] max-w-xxl">
-
-              <h1 className="text-[#3B6B4A] font-bold text-2xl pb-2">Specialty Teas Crafted with Care
-              </h1>
+          <div className="max-w-2xl w-full">
+            <div className="text-[#5C6650] text-center md:text-left">
+              <h1 className="text-[#3B6B4A] font-bold text-2xl pb-2">Specialty Teas Crafted with Care</h1>
               <p>Nepal Tea specializes in Signature Himalayan Blends, featuring seasonal herbal infusions rooted in Nepali traditions.
                 We also offer Rare & Exotic Teas, including single-origin Nepali orthodox teas, premium Darjeeling, and Assam.
                 For wellness, we feature Herbal & Medicinal Teas like tulsi, ginger, and lemongrass blends—nature’s healing goodness in every cup.
@@ -75,9 +72,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="highlights  ">
-          <h1 className="pt-15 text-black text-2xl font-bold text-center mb-8">Our Highlights</h1>
-          <div className="flex flex-row justify-center items-center gap-50 mt-5">
+        <div className="highlights mt-20">
+          <h1 className="text-black text-2xl font-bold text-center mb-8">Our Highlights</h1>
+          <div className="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-24 mt-5">
 
             <div className="flex flex-col items-center">
               <Image

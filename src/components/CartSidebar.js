@@ -1,10 +1,21 @@
 "use client";
 
-import { useCart } from "@/context/CartContext";
 import Link from "next/link";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  selectCartItems,
+  selectIsCartOpen,
+  selectCartTotal,
+  removeFromCart,
+  changeQty,
+  setCartOpen,
+} from "@/store/slices/cartSlice";
 
-export default function CartSidebar() {
-  const { cartItems, isOpen, setIsOpen, removeFromCart, changeQty, total } = useCart();
+export default function CartSidebar() { //actual sidebar to appear
+  const dispatch = useDispatch(); //to send instructions to redux (perform this action)
+  const cartItems = useSelector(selectCartItems);
+  const isOpen = useSelector(selectIsCartOpen);
+  const total = useSelector(selectCartTotal);
 
   if (!isOpen) return null;
 
@@ -13,7 +24,7 @@ export default function CartSidebar() {
       {/* Backdrop */}
       <div 
         className="fixed inset-0 bg-black/50 z-40 transition-opacity"
-        onClick={() => setIsOpen(false)}
+        onClick={() => dispatch(setCartOpen(false))}
       />
 
       {/* Sidebar */}
@@ -23,7 +34,7 @@ export default function CartSidebar() {
         <div className="flex items-center justify-between p-5 border-b border-gray-200">
           <h2 className="text-xl font-bold text-[#2D4A38]">Your Cart</h2>
           <button 
-            onClick={() => setIsOpen(false)}
+            onClick={() => dispatch(setCartOpen(false))}
             className="text-gray-500 hover:text-gray-800 transition p-2"
           >
             ✕
@@ -51,7 +62,7 @@ export default function CartSidebar() {
                     <div className="flex justify-between items-start">
                       <h4 className="text-sm font-bold text-[#2D4A38] leading-tight">{item.name}</h4>
                       <button 
-                        onClick={() => removeFromCart(item.name)}
+                        onClick={() => dispatch(removeFromCart(item.name))}
                         className="text-red-500 hover:text-red-700 text-xs "
                       >
                         Remove
@@ -62,14 +73,14 @@ export default function CartSidebar() {
                     {/* Qty Controls */}
                     <div className="flex items-center gap-3 mt-1">
                       <button 
-                        onClick={() => changeQty(item.name, -1)}
+                        onClick={() => dispatch(changeQty({ name: item.name, delta: -1 }))}
                         className="w-6 h-6 rounded bg-white border border-[#E8DFCF] flex items-center justify-center text-xs hover:bg-gray-50"
                       >
                         -
                       </button>
                       <span className="text-xs font-semibold">{item.qty}</span>
                       <button 
-                        onClick={() => changeQty(item.name, 1)}
+                        onClick={() => dispatch(changeQty({ name: item.name, delta: 1 }))}
                         className="w-6 h-6 rounded bg-white border border-[#E8DFCF] flex items-center justify-center text-xs hover:bg-gray-50"
                       >
                         +
@@ -91,7 +102,7 @@ export default function CartSidebar() {
             </div>
             <Link 
               href="/checkout"
-              onClick={() => setIsOpen(false)}
+              onClick={() => dispatch(setCartOpen(false))}
               className="w-full py-3 rounded-xl bg-[#3B6B4A] text-white font-bold hover:bg-[#2D4A38] transition-colors flex items-center justify-center text-center"
             >
               Proceed to Checkout

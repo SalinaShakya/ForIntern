@@ -4,10 +4,8 @@ export default function Contact() {
   return (
     <>
       <Navbar />
-      <main className="text-left mt-30 pl-100 mb-10">
-        <div className="w-full max-w-lg bg-white p-8 rounded-lg shadow-black">
-          {/* <main className="min-h-screen flex items-center justify-center bg-[#FAF4EE]">
-        <div className="w-full max-w-lg bg-white p-8 rounded-lg shadow-lg"> */}
+      <main className="min-h-screen flex flex-col items-center justify-center px-6 py-24 lg:px-20 lg:py-32">
+        <div className="w-full max-w-md lg:max-w-lg bg-white p-8 lg:p-12 rounded-2xl shadow-xl">
           <h1 className="text-3xl font-bold text-center mb-6">
             Contact Us
           </h1>

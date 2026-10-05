@@ -4,10 +4,11 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Image from "next/image";
 import Link from "next/link";
-import { useCart } from "@/context/CartContext";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/store/slices/cartSlice";
 
 export default function Foroolongtea() {
-  const { addToCart } = useCart();
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -59,7 +60,7 @@ export default function Foroolongtea() {
                 <div className="flex gap-3 mt-6">
                   <button
                     id="add-to-cart-black-tea"
-                    onClick={() => addToCart({ name: "Green Tea", price: "Rs. 45,678", src: "/images/greentea.jpg" })}
+                    onClick={() => dispatch(addToCart({ name: "Green Tea", price: "Rs. 45,678", src: "/images/greentea.jpg" }))}
                     className="flex-1 py-3 text-sm font-semibold rounded-xl border-2 border-[#3B6B4A] text-[#3B6B4A] hover:bg-[#3B6B4A] hover:text-white transition-all duration-200"
                   >
                     🛒 Add to Cart

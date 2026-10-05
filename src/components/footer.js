@@ -4,7 +4,7 @@ export default function Footer() {
     return (
         <footer className="bg-[#F5EEE3] shadow-md border-t border-[#D4C9B5]">
             <div className="max-w-7xl mx-auto px-8 py-10">
-                <div className="grid grid-cols-4 gap-32">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-32">
                     {/* Logo / Brand */}
                     <div>
                         <h2 className="text-2xl font-bold text-[#3B6B4A]">Nepal Tea</h2>

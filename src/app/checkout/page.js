@@ -4,10 +4,12 @@
 
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
-import { useCart } from "@/context/CartContext";
+import { useSelector } from "react-redux";
+import { selectCartItems, selectCartTotal } from "@/store/slices/cartSlice";
 
 export default function Checkout() {
-  const { cartItems, total } = useCart();
+  const cartItems = useSelector(selectCartItems);
+  const total = useSelector(selectCartTotal);
 
   return (
     <>
