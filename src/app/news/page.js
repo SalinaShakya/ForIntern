@@ -39,7 +39,7 @@ export default function News() {
         <>
             <Navbar />
 
-            <main className="bg-[#FBF5EF]-50 min-h-screen">
+            <main className="bg-[#FBF5EF] min-h-screen">
 
                 {/* Hero */}
                 <section className="relative h-[420px]">
@@ -51,7 +51,7 @@ export default function News() {
                     />
 
                     <div className="absolute inset-0 bg-black/10 flex items-center justify-center">
-                        <div className="text-center text- [#7D806A] px-6">
+                        <div className="text-center text-[#7D806A] px-6">
                             <h1 className="text-5xl font-bold mb-4 ">
                                 News & Updates
                             </h1>

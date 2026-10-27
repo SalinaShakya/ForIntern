@@ -18,6 +18,8 @@ export const metadata = {
 
 import StoreProvider from "@/store/StoreProvider";
 import CartSidebar from "@/components/CartSidebar";
+import AuthModal from "@/components/AuthModal";
+import { AuthProvider } from "@/context/AuthContext";
 
 export default function RootLayout({ children }) {
   return (
@@ -27,8 +29,11 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col">
         <StoreProvider>
-          {children}
-          <CartSidebar />
+          <AuthProvider>
+            {children}
+            <CartSidebar />
+            <AuthModal />
+          </AuthProvider>
         </StoreProvider>
       </body>
     </html>
