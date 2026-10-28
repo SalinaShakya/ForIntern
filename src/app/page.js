@@ -5,8 +5,26 @@ import Link from "next/link";
 import CollectionCarousel from "@/components/CollectionCarousel";
 import Mail from "@/components/mail";
 import FAQ from "@/components/FAQ";
+import { createClient } from "@/lib/supabase/server";
+import ReviewsSection from "@/components/ReviewsSection";
 
-export default function Home() {
+export default async function Home() {
+  const supabase = await createClient();
+  let reviews = [];
+
+  try {
+    const { data, error } = await supabase
+      .from("reviews")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    if (!error && data) {
+      reviews = data;
+    }
+  } catch (err) {
+    console.error("Failed to load reviews from Supabase:", err);
+  }
+
   return (
     <>
       <Navbar />
@@ -127,100 +145,7 @@ export default function Home() {
       </div>
 
       {/* Review Section */}
-      <section className="text-black py-16 bg-[#FBF5EF] border-t border-[#FBF5EF]/50">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-[#3B6B4A] text-3xl font-bold text-center mb-2">
-            What Our Tea Lovers Say
-          </h2>
-          <div className="w-16 h-1 bg-[#3B6B4A] mx-auto mb-12 rounded-full" />
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Review 1 */}
-            <div className="bg-white p-8 rounded-2xl border border-[#E8DFCF]/60 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between group">
-              <div>
-                {/* Stars */}
-                <div className="flex gap-1 text-amber-500 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-                {/* Content */}
-                <p className="text-[#5C6650] italic leading-relaxed text-base mb-6">
-                  "The White Tea from Nepal Tea is hands-down the best I have ever tasted. It has a delicate, floral flavor that is incredibly soothing. The quality is unmatched!"
-                </p>
-              </div>
-              {/* User info */}
-              <div className="flex items-center gap-4 border-t border-gray-100 pt-4">
-                <div className="w-12 h-12 rounded-full bg-[#EAF0EB] text-[#3B6B4A] flex items-center justify-center font-bold text-lg shadow-inner group-hover:bg-[#3B6B4A] group-hover:text-white transition-colors duration-300">
-                  AS
-                </div>
-                <div>
-                  <h4 className="text-[#2C3A1E] font-bold text-sm">Aarav Sharma</h4>
-                  <span className="text-xs text-[#5C6650] font-medium bg-[#EAF0EB]/60 px-2 py-0.5 rounded">Verified Buyer</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Review 2 */}
-            <div className="bg-white p-8 rounded-2xl border border-[#E8DFCF]/60 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between group">
-              <div>
-                {/* Stars */}
-                <div className="flex gap-1 text-amber-500 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-                {/* Content */}
-                <p className="text-[#5C6650] italic leading-relaxed text-base mb-6">
-                  "I'm in love with the Lemongrass Tea. It is so fresh and aromatic, perfect for my morning routine. The eco-friendly packaging is a wonderful bonus!"
-                </p>
-              </div>
-              {/* User info */}
-              <div className="flex items-center gap-4 border-t border-gray-100 pt-4">
-                <div className="w-12 h-12 rounded-full bg-[#EAF0EB] text-[#3B6B4A] flex items-center justify-center font-bold text-lg shadow-inner group-hover:bg-[#3B6B4A] group-hover:text-white transition-colors duration-300">
-                  EW
-                </div>
-                <div>
-                  <h4 className="text-[#2C3A1E] font-bold text-sm">Emily Watson</h4>
-                  <span className="text-xs text-[#5C6650] font-medium bg-[#EAF0EB]/60 px-2 py-0.5 rounded">Verified Buyer</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Review 3 */}
-            <div className="bg-white p-8 rounded-2xl border border-[#E8DFCF]/60 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between group">
-              <div>
-                {/* Stars */}
-                <div className="flex gap-1 text-amber-500 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-                {/* Content */}
-                <p className="text-[#5C6650] italic leading-relaxed text-base mb-6">
-                  "The Masala Chiya is exceptionally authentic. It brings back memories of tea stalls in Kathmandu. Perfectly spiced and very rich in flavor. Highly recommend!"
-                </p>
-              </div>
-              {/* User info */}
-              <div className="flex items-center gap-4 border-t border-gray-100 pt-4">
-                <div className="w-12 h-12 rounded-full bg-[#EAF0EB] text-[#3B6B4A] flex items-center justify-center font-bold text-lg shadow-inner group-hover:bg-[#3B6B4A] group-hover:text-white transition-colors duration-300">
-                  TN
-                </div>
-                <div>
-                  <h4 className="text-[#2C3A1E] font-bold text-sm">Tenzing Norgay</h4>
-                  <span className="text-xs text-[#5C6650] font-medium bg-[#EAF0EB]/60 px-2 py-0.5 rounded">Verified Buyer</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ReviewsSection initialReviews={reviews} />
 
       <FAQ />
 
