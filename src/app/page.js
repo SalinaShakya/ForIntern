@@ -139,9 +139,31 @@ export default async function Home() {
 
 
 
-      <div className="text-black py-12 bg-[#FBF5EF] bg-cover bg-center bg-no-repeat ">
-        <h1 className="text-[#3B6B4A] text-2xl font-bold mt-16 text-center">Our Collection</h1>
+      <div className="text-black py-16 bg-[#FBF5EF] bg-cover bg-center bg-no-repeat">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <h1 className="text-[#3B6B4A] text-3xl font-bold text-center">Our Collection</h1>
+          <p className="mt-2 text-[#5C6650] text-sm md:text-base max-w-xl mx-auto">
+            Discover our hand-picked specialty teas crafted from organic Himalayan harvests.
+          </p>
+        </div>
         <CollectionCarousel />
+        <div className="text-center mt-8">
+          <Link
+            href="/products"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-[#3B6B4A] hover:text-[#2C3A1E] transition-colors"
+          >
+            Explore all teas in our catalog
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
+        </div>
       </div>
 
       {/* Review Section */}

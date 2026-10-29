@@ -259,7 +259,7 @@ export default function TeaDetailPage() {
         </div>
 
         {/* You May Also Like Section */}
-        <YouMayLike />
+        <YouMayLike currentSlug={tea?.slug || slug} teaType={tea?.tea_type?.slug || tea?.base_type?.slug} />
       </main>
 
       <Footer />
